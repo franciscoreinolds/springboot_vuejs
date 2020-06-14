@@ -1,0 +1,11 @@
+### build docker image ###
+
+docker build -t spring_psql .
+
+### start docker container ###
+
+docker run -p 5432:5432 -d --name spring_psql spring_psql
+
+### execute psql inside docker container ###
+
+psql -h localhost -p 5432 -U spring -W -d spring_db
