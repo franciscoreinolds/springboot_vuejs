@@ -1,11 +1,29 @@
-### build docker image ###
+### build docker images ###
 
 docker build -t spring_psql .
 
-### start docker container ###
+docker build -t spring_backend .
 
-docker run -p 5432:5432 -d --name spring_psql spring_psql
+docker build -t vuejs-cookbook .
+
+### create docker containers ###
+
+docker run -d --network="host" --name spring_psql spring_psql
+
+docker run -d --network="host" --name spring_backend spring_backend
+
+docker run -d --network="host" --name vuejs-cookbook vuejs-cookbook
+
+### start docker containers ###
+
+docker start spring_psql
+
+docker start spring_backend
+
+docker start vuejs-cookbook
+
+### go to http://localhost:8080/
 
 ### execute psql inside docker container ###
 
-psql -h localhost -p 5432 -U spring -W -d spring_db
+psql -h localhost -p 5432 -U spring -d spring_db

@@ -1,0 +1,7 @@
+FROM openjdk:8-alpine
+MAINTAINER "Francisco Reinolds"
+RUN mkdir -p /usr/src/crud
+WORKDIR /usr/src/crud
+COPY ./target/crud-0.0.1-SNAPSHOT.jar /usr/src/crud
+EXPOSE 9000
+CMD ["java", "-jar", "crud-0.0.1-SNAPSHOT.jar"]
